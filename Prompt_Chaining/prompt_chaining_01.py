@@ -2,10 +2,10 @@ import os
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from dotenv import load_dotenv
 
 # For better security, load environment variables from a .env file
-from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(os.path.join(os.path.dirname(__file__), "../.env"))
 # Make sure your OPENAI_API_KEY is set in the .env file
 
 # Initialize the Language Model (using ChatOpenAI is recommended)
@@ -13,12 +13,12 @@ llm = ChatOpenAI(temperature=0)
 
 # --- Prompt 1: Extract Information ---
 prompt_extract = ChatPromptTemplate.from_template(
-   "Extract the technical specifications from the following text:\n\n{text_input}"
+    "Extract the technical specifications from the following text:\n\n{text_input}"
 )
 
 # --- Prompt 2: Transform to JSON ---
 prompt_transform = ChatPromptTemplate.from_template(
-   "Transform the following specifications into a JSON object with 'cpu', 'memory', and 'storage' as keys:\n\n{specifications}"
+    "Transform the following specifications into a JSON object with 'cpu', 'memory', and 'storage' as keys:\n\n{specifications}"
 )
 
 # --- Build the Chain using LCEL ---
@@ -28,10 +28,7 @@ extraction_chain = prompt_extract | llm | StrOutputParser()
 # The full chain passes the output of the extraction chain into the 'specifications'
 # variable for the transformation prompt.
 full_chain = (
-   {"specifications": extraction_chain}
-   | prompt_transform
-   | llm
-   | StrOutputParser()
+    {"specifications": extraction_chain} | prompt_transform | llm | StrOutputParser()
 )
 
 # --- Run the Chain ---
