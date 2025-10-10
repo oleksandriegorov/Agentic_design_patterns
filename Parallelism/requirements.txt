@@ -1,0 +1,6 @@
+# LangChain dependencies for parallelism pattern implementation
+langchain-openai>=0.1.0
+langchain-core>=0.2.0
+
+# Environment variable management
+python-dotenv>=1.0.0
