@@ -3,6 +3,7 @@ import asyncio
 from typing import Optional
 
 from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import Runnable, RunnableParallel, RunnablePassthrough
@@ -12,7 +13,8 @@ dotenv.load_dotenv(os.path.join(os.path.dirname(__file__), "../.env"))
 # --- Configuration ---
 # Ensure your API key environment variable is set (e.g., OPENAI_API_KEY)
 try:
-    llm: Optional[ChatOpenAI] = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
+    # llm: Optional[ChatOpenAI] = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
+    llm: Optional[ChatGoogleGenerativeAI] = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
 
 except Exception as e:
     print(f"Error initializing language model: {e}")
