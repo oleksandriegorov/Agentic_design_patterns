@@ -1,3 +1,6 @@
+# Project specific playground files
+**/nda_*
+
 # Files to ignore while commiting Python code to git repository
 .DS_Store
 .env
