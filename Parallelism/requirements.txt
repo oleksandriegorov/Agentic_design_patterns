@@ -2,5 +2,13 @@
 langchain-openai>=0.1.0
 langchain-core>=0.2.0
 
+# Google ADK dependencies for parallelism pattern implementation
+google-adk>=1.0.0
+
 # Environment variable management
 python-dotenv>=1.0.0
+
+# Standard library dependencies (included with Python)
+# - os
+# - asyncio 
+# - typing
