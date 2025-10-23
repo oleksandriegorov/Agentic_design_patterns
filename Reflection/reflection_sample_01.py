@@ -30,11 +30,15 @@ def run_reflection_loop():
    4.  Handle edge cases: The factorial of 0 is 1.
    5.  Handle invalid input: Raise a ValueError if the input is a negative number.
    """
+   system_prompt = """
+   You are a helpful assistant with expertise in Python programming.
+   Your output is python code only, without any additional explanations.
+   """
    # --- The Reflection Loop ---
    max_iterations = 3
    current_code = ""
    # We will build a conversation history to provide context in each step.
-   message_history = [HumanMessage(content=task_prompt)]
+   message_history = [SystemMessage(content=system_prompt), HumanMessage(content=task_prompt)]
 
 
    for i in range(max_iterations):
