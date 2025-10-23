@@ -1,5 +1,6 @@
 # Project specific playground files
 **/nda_*
+faiss_index
 
 # Files to ignore while commiting Python code to git repository
 .DS_Store
